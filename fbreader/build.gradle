@@ -7,6 +7,13 @@ android {
         targetSdkVersion 22
     }
 
+    sourceSets.main.jni.srcDirs = [] //disable automatic ndk-build call
+    sourceSets {
+        main {
+            jniLibs.srcDirs 'src/main/jniLibs'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -14,6 +21,13 @@ android {
         }
     }
 
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
 }
 
 dependencies {
