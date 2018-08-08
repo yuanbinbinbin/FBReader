@@ -1,0 +1,5 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="yuku.ambilwarna">
+
+    <!--背景颜色选择器，用在设置背景颜色时，以及标签背景编辑时使用。-->
+</manifest>
