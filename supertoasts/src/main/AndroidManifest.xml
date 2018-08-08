@@ -1,0 +1,5 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.github.johnpersano.supertoasts">
+    <!--特殊的toast控件，在工程中使用的地方较多。-->
+    <!--可以提取为一个模块，注意其中无用的文件可以删除掉。-->
+</manifest>
