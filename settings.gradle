@@ -1,1 +1,1 @@
-include ':app', ':fbreader', ':AmbilWarna'
+include ':app', ':fbreader', ':AmbilWarna', ':android-filechooser'

@@ -17,8 +17,6 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.0.0'
-    implementation project(':AmbilWarna')
-    implementation project(':android-filechooser')
 }
