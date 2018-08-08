@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mobeta.android.dslv">
+    <!--拖动排序列表。-->
+    <!--只有CatalogManagerActivity（目录管理界面）中使用了DragSortListView ，可以暂时忽略这个界面，RN端来实现。-->
+    <!--所以此模块可以不用集成。-->
+
+    <!--包名为：com.mobeta.android.dslv-->
+    <!--此模块可以删除。对应“在线书库” 中的“管理书库”菜单中的列表排序。CatalogManagerActivity 为对应的activity，可以将其删除。-->
+</manifest>

@@ -1,1 +1,1 @@
-include ':app', ':fbreader', ':AmbilWarna', ':android-filechooser'
+include ':app', ':fbreader', ':AmbilWarna', ':android-filechooser', ':drag-sort-listview'
