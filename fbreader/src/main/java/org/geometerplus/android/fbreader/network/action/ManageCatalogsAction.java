@@ -23,13 +23,13 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.widget.Toast;
 
 import org.geometerplus.fbreader.network.tree.RootTree;
 import org.geometerplus.fbreader.network.tree.ManageCatalogsItemTree;
 import org.geometerplus.fbreader.network.NetworkTree;
 import org.geometerplus.fbreader.network.NetworkLibrary;
 import org.geometerplus.zlibrary.ui.android.R;
-import org.geometerplus.android.fbreader.network.CatalogManagerActivity;
 import org.geometerplus.android.fbreader.network.NetworkLibraryActivity;
 import org.geometerplus.android.util.OrientationUtil;
 
@@ -48,13 +48,6 @@ public class ManageCatalogsAction extends RootAction {
 		final ArrayList<String> ids = new ArrayList<String>(myLibrary.activeIds());
 		final ArrayList<String> inactiveIds = new ArrayList<String>(myLibrary.allIds());
 		inactiveIds.removeAll(ids);
-
-		OrientationUtil.startActivityForResult(
-			myActivity,
-			new Intent(myActivity.getApplicationContext(), CatalogManagerActivity.class)
-				.putStringArrayListExtra(NetworkLibraryActivity.ENABLED_CATALOG_IDS_KEY, ids)
-				.putStringArrayListExtra(NetworkLibraryActivity.DISABLED_CATALOG_IDS_KEY, inactiveIds),
-			NetworkLibraryActivity.REQUEST_MANAGE_CATALOGS
-		);
+		Toast.makeText(myActivity, "管理书库", Toast.LENGTH_SHORT).show();
 	}
 }

@@ -1,1 +1,1 @@
-include ':app', ':fbreader', ':android-filechooser', ':drag-sort-listview', ':supertoasts'
+include ':app', ':fbreader', ':android-filechooser',  ':supertoasts'
