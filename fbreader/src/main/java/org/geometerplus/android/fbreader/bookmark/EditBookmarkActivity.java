@@ -33,7 +33,6 @@ import android.util.TypedValue;
 import android.view.*;
 import android.widget.*;
 
-import yuku.ambilwarna.widget.AmbilWarnaPrefWidgetView;
 
 import org.geometerplus.zlibrary.core.options.ZLStringOption;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
@@ -225,15 +224,11 @@ public class EditBookmarkActivity extends Activity implements IBookCollection.Li
 			final HighlightingStyle style = getItem(position);
 
 			final CheckBox checkBox = (CheckBox)ViewUtil.findView(view, R.id.style_item_checkbox);
-			final AmbilWarnaPrefWidgetView colorView =
-				(AmbilWarnaPrefWidgetView)ViewUtil.findView(view, R.id.style_item_color);
 			final TextView titleView = ViewUtil.findTextView(view, R.id.style_item_title);
 			final Button button = (Button)ViewUtil.findView(view, R.id.style_item_edit_button);
 
 			checkBox.setChecked(style.Id == myBookmark.getStyleId());
 
-			colorView.setVisibility(View.VISIBLE);
-			BookmarksUtil.setupColorView(colorView, style);
 
 			titleView.setText(BookmarkUtil.getStyleName(style));
 

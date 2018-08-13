@@ -23,8 +23,8 @@ import android.content.Context;
 import android.preference.Preference;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import yuku.ambilwarna.AmbilWarnaDialog;
 
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 import org.geometerplus.zlibrary.core.util.ZLColor;
@@ -55,25 +55,6 @@ public abstract class ColorPreference extends Preference {
 	@Override
 	protected void onClick() {
 		final ZLResource buttonResource = ZLResource.resource("dialog").getResource("button");
-		new AmbilWarnaDialog(
-			getContext(),
-			ZLAndroidColorUtil.rgb(getSavedColor()),
-			new AmbilWarnaDialog.OnAmbilWarnaListener() {
-				@Override
-				public void onOk(AmbilWarnaDialog dialog, int color) {
-					if (!callChangeListener(color)) {
-						return;
-					}
-					saveColor(new ZLColor(color));
-					notifyChanged();
-				}
-
-				@Override
-				public void onCancel(AmbilWarnaDialog dialog) {
-				}
-			},
-			buttonResource.getResource("ok").getValue(),
-			buttonResource.getResource("cancel").getValue()
-		).show();
+		Toast.makeText(getContext(),"选择颜色",Toast.LENGTH_LONG).show();
 	}
 }

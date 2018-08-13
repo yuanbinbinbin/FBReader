@@ -27,7 +27,6 @@ import android.view.*;
 import android.widget.*;
 import android.content.*;
 
-import yuku.ambilwarna.widget.AmbilWarnaPrefWidgetView;
 
 import org.geometerplus.zlibrary.core.util.MiscUtil;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
@@ -405,8 +404,6 @@ public class BookmarksActivity extends Activity implements IBookCollection.Liste
 				LayoutInflater.from(parent.getContext()).inflate(R.layout.bookmark_item, parent, false);
 			final ImageView imageView = ViewUtil.findImageView(view, R.id.bookmark_item_icon);
 			final View colorContainer = ViewUtil.findView(view, R.id.bookmark_item_color_container);
-			final AmbilWarnaPrefWidgetView colorView =
-				(AmbilWarnaPrefWidgetView)ViewUtil.findView(view, R.id.bookmark_item_color);
 			final TextView textView = ViewUtil.findTextView(view, R.id.bookmark_item_text);
 			final TextView bookTitleView = ViewUtil.findTextView(view, R.id.bookmark_item_booktitle);
 
@@ -420,7 +417,6 @@ public class BookmarksActivity extends Activity implements IBookCollection.Liste
 			} else {
 				imageView.setVisibility(View.GONE);
 				colorContainer.setVisibility(View.VISIBLE);
-				BookmarksUtil.setupColorView(colorView, myStyles.get(bookmark.getStyleId()));
 				textView.setText(bookmark.getText());
 				if (myShowAddBookmarkItem) {
 					bookTitleView.setVisibility(View.GONE);

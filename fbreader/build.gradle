@@ -51,7 +51,6 @@ task CopyToJniLibs(type: Copy, dependsOn: 'ndkBuild', description: 'copy the nat
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.0.0'
-    implementation project(':AmbilWarna')
     implementation project(':android-filechooser')
     implementation project(':drag-sort-listview')
     implementation project(':supertoasts')

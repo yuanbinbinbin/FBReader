@@ -26,8 +26,8 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
-import yuku.ambilwarna.AmbilWarnaDialog;
 
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 import org.geometerplus.zlibrary.ui.android.R;
@@ -58,21 +58,6 @@ public class Chooser extends ListActivity implements AdapterView.OnItemClickList
 		getListView().setOnItemClickListener(this);
 	}
 
-	private final AmbilWarnaDialog.OnAmbilWarnaListener myColorChooserListener =
-		new AmbilWarnaDialog.OnAmbilWarnaListener() {
-			@Override
-			public void onOk(AmbilWarnaDialog dialog, int color) {
-				final Intent result = new Intent()
-					.putExtra(BackgroundPreference.VALUE_KEY, "")
-					.putExtra(BackgroundPreference.COLOR_KEY, color);
-				setResult(RESULT_OK, result);
-				finish();
-			}
-
-			@Override
-			public void onCancel(AmbilWarnaDialog dialog) {
-			}
-		};
 
 	public final void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		switch (position) {
@@ -81,13 +66,7 @@ public class Chooser extends ListActivity implements AdapterView.OnItemClickList
 				//纯色
 				final ZLResource buttonResource =
 					ZLResource.resource("dialog").getResource("button");
-				new AmbilWarnaDialog(
-					this,
-					getIntent().getIntExtra(BackgroundPreference.COLOR_KEY, 0),
-					myColorChooserListener,
-					buttonResource.getResource("ok").getValue(),
-					buttonResource.getResource("cancel").getValue()
-				).show();
+				Toast.makeText(getApplicationContext(),"纯色",Toast.LENGTH_LONG).show();
 				break;
 			}
 			case 1:
