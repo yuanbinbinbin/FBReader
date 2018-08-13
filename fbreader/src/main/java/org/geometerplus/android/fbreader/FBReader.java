@@ -260,7 +260,9 @@ public final class FBReader extends FBReaderMainActivity implements ZLApplicatio
 			new SelectionPopup(myFBReaderApp);
 		}
 
+		//本地书柜
 		myFBReaderApp.addAction(ActionCode.SHOW_LIBRARY, new ShowLibraryAction(this, myFBReaderApp));
+		//阅读相关设置
 		myFBReaderApp.addAction(ActionCode.SHOW_PREFERENCES, new ShowPreferencesAction(this, myFBReaderApp));
 		myFBReaderApp.addAction(ActionCode.SHOW_BOOK_INFO, new ShowBookInfoAction(this, myFBReaderApp));
 		myFBReaderApp.addAction(ActionCode.SHOW_TOC, new ShowTOCAction(this, myFBReaderApp));
@@ -305,7 +307,9 @@ public final class FBReader extends FBReaderMainActivity implements ZLApplicatio
 		final String action = intent.getAction();
 
 		myOpenBookIntent = intent;
+		//当用户点击Home，从历史中选择该Activity，系统会自动加上这个Flag
 		if ((intent.getFlags() & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) == 0) {
+			//不是从历史中返回的
 			if (FBReaderIntents.Action.CLOSE.equals(action)) {
 				myCancelIntent = intent;
 				myOpenBookIntent = null;
