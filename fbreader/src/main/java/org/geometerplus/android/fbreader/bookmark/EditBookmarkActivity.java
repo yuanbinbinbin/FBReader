@@ -47,7 +47,7 @@ import org.geometerplus.android.fbreader.api.FBReaderIntents;
 import org.geometerplus.android.fbreader.libraryService.BookCollectionShadow;
 import org.geometerplus.android.util.OrientationUtil;
 import org.geometerplus.android.util.ViewUtil;
-
+//编辑书签
 public class EditBookmarkActivity extends Activity implements IBookCollection.Listener<Book> {
 	private final ZLResource myResource = ZLResource.resource("editBookmark");
 	private final BookCollectionShadow myCollection = new BookCollectionShadow();
@@ -239,6 +239,7 @@ public class EditBookmarkActivity extends Activity implements IBookCollection.Li
 
 			button.setVisibility(View.VISIBLE);
 			button.setText(myResource.getResource("editStyle").getValue());
+			//编辑样式
 			button.setOnClickListener(new Button.OnClickListener() {
 				@Override
 				public void onClick(View view) {

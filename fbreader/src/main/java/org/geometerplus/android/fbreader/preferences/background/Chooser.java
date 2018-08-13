@@ -48,8 +48,11 @@ public class Chooser extends ListActivity implements AdapterView.OnItemClickList
 			this, R.layout.background_chooser_item, R.id.background_chooser_item_title
 		);
 		final ZLResource chooserResource = myResource.getResource("chooser");
+		//纯色
 		adapter.add(chooserResource.getResource("solidColor").getValue());
+		//预定纹理
 		adapter.add(chooserResource.getResource("predefined").getValue());
+		//选择文件
 		adapter.add(chooserResource.getResource("selectFile").getValue());
 		setListAdapter(adapter);
 		getListView().setOnItemClickListener(this);
@@ -75,6 +78,7 @@ public class Chooser extends ListActivity implements AdapterView.OnItemClickList
 		switch (position) {
 			case 0:
 			{
+				//纯色
 				final ZLResource buttonResource =
 					ZLResource.resource("dialog").getResource("button");
 				new AmbilWarnaDialog(
@@ -87,10 +91,12 @@ public class Chooser extends ListActivity implements AdapterView.OnItemClickList
 				break;
 			}
 			case 1:
+				//预定义纹理
 				startActivityForResult(new Intent(this, PredefinedImages.class), 1);
 				break;
 			case 2:
 			{
+				//选择文件
 				final String initialDir;
 				final String currentValue =
 					getIntent().getStringExtra(BackgroundPreference.VALUE_KEY);

@@ -41,7 +41,7 @@ import org.geometerplus.android.fbreader.FBReader;
 import org.geometerplus.android.fbreader.api.FBReaderIntents;
 import org.geometerplus.android.fbreader.libraryService.BookCollectionShadow;
 import org.geometerplus.android.util.*;
-
+//我的书签
 public class BookmarksActivity extends Activity implements IBookCollection.Listener<Book> {
 	private static final int OPEN_ITEM_ID = 0;
 	private static final int EDIT_ITEM_ID = 1;
@@ -279,14 +279,17 @@ public class BookmarksActivity extends Activity implements IBookCollection.Liste
 		final Bookmark bookmark = adapter.getItem(position);
 		switch (item.getItemId()) {
 			case OPEN_ITEM_ID:
+				//打开书签
 				gotoBookmark(bookmark);
 				return true;
 			case EDIT_ITEM_ID:
+				//编辑书签
 				final Intent intent = new Intent(this, EditBookmarkActivity.class);
 				FBReaderIntents.putBookmarkExtra(intent, bookmark);
 				OrientationUtil.startActivity(this, intent);
 				return true;
 			case DELETE_ITEM_ID:
+				//删除书签
 				myCollection.deleteBookmark(bookmark);
 				return true;
 		}
@@ -387,8 +390,11 @@ public class BookmarksActivity extends Activity implements IBookCollection.Liste
 		public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
 			final int position = ((AdapterView.AdapterContextMenuInfo)menuInfo).position;
 			if (getItem(position) != null) {
+				//打开书签
 				menu.add(0, OPEN_ITEM_ID, 0, myResource.getResource("openBook").getValue());
+				//编辑书签
 				menu.add(0, EDIT_ITEM_ID, 0, myResource.getResource("editBookmark").getValue());
+				//删除书签
 				menu.add(0, DELETE_ITEM_ID, 0, myResource.getResource("deleteBookmark").getValue());
 			}
 		}

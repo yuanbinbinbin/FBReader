@@ -61,6 +61,7 @@ public class SelectionBookmarkAction extends FBAndroidAction {
 			android.R.drawable.ic_menu_edit,
 			ZLResource.resource("dialog").getResource("button").getResource("edit").getValue()
 		);
+		//编辑书签
 		toast.setOnClickWrapper(new OnClickWrapper("bkmk", new SuperToast.OnClickListener() {
 			@Override
 			public void onClick(View view, Parcelable token) {

@@ -57,6 +57,7 @@ import org.geometerplus.android.fbreader.sync.SyncOperations;
 import org.geometerplus.android.util.UIUtil;
 import org.geometerplus.android.util.DeviceType;
 
+//阅读相关设置
 public class PreferenceActivity extends ZLPreferenceActivity {
 	private final ActivityNetworkContext myNetworkContext = new ActivityNetworkContext(this);
 	private final FileChooserCollection myChooserCollection = new FileChooserCollection(this, 2000);
@@ -454,6 +455,7 @@ public class PreferenceActivity extends ZLPreferenceActivity {
 
 		final Screen colorsScreen = createPreferenceScreen("colors");
 
+		//region 颜色&墙纸
 		final PreferenceSet backgroundSet = new PreferenceSet.Enabler() {
 			@Override
 			protected Boolean detectState() {
@@ -487,6 +489,7 @@ public class PreferenceActivity extends ZLPreferenceActivity {
 		colorsScreen.addOption(profile.SelectionForegroundOption, "selectionForeground");
 		colorsScreen.addOption(profile.HighlightingForegroundOption, "highlightingForeground");
 		colorsScreen.addOption(profile.HighlightingBackgroundOption, "highlightingBackground");
+		//endregion
 
 		final Screen marginsScreen = createPreferenceScreen("margins");
 		marginsScreen.addOption(viewOptions.LeftMargin, "left");
