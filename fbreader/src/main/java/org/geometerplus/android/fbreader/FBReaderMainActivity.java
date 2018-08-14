@@ -23,8 +23,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
-
-import com.github.johnpersano.supertoasts.SuperActivityToast;
+import android.widget.Toast;
 
 import org.geometerplus.zlibrary.core.options.*;
 import org.geometerplus.zlibrary.ui.android.library.*;
@@ -37,7 +36,7 @@ public abstract class FBReaderMainActivity extends Activity {
 	public static final int REQUEST_CANCEL_MENU = 2;
 	public static final int REQUEST_DICTIONARY = 3;
 
-	private volatile SuperActivityToast myToast;
+	private volatile Toast myToast;
 
 	@Override
 	protected void onCreate(Bundle saved) {
@@ -82,38 +81,25 @@ public abstract class FBReaderMainActivity extends Activity {
 
 	/* ++++++ SUPER TOAST ++++++ */
 	public boolean isToastShown() {
-		final SuperActivityToast toast = myToast;
-		return toast != null && toast.isShowing();
+		final Toast toast = myToast;
+		return toast != null;
 	}
 
 	public void hideToast() {
-		final SuperActivityToast toast = myToast;
-		if (toast != null && toast.isShowing()) {
+		final Toast toast = myToast;
+		if (toast != null) {
 			myToast = null;
 			runOnUiThread(new Runnable() {
 				public void run() {
-					toast.dismiss();
+					toast.cancel();
 				}
 			});
 		}
 	}
 
-	public void showToast(final SuperActivityToast toast) {
+	public void showToast(final Toast toast) {
 		hideToast();
 		myToast = toast;
-		// TODO: avoid this hack (accessing text style via option)
-		final int dpi = getZLibrary().getDisplayDPI();
-		final int defaultFontSize = dpi * 18 / 160;
-		final int fontSize = new ZLIntegerOption("Style", "Base:fontSize", defaultFontSize).getValue();
-		final int percent = new ZLIntegerRangeOption("Options", "ToastFontSizePercent", 25, 100, 90).getValue();
-		final int dpFontSize = fontSize * 160 * percent / dpi / 100;
-		toast.setTextSize(dpFontSize);
-		toast.setButtonTextSize(dpFontSize * 7 / 8);
-
-		final String fontFamily =
-			new ZLStringOption("Style", "Base:fontFamily", "sans-serif").getValue();
-		toast.setTypeface(AndroidFontUtil.systemTypeface(fontFamily, false, false));
-
 		runOnUiThread(new Runnable() {
 			public void run() {
 				toast.show();

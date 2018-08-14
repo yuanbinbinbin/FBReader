@@ -24,11 +24,8 @@ import android.content.ActivityNotFoundException;
 import android.net.Uri;
 import android.os.Parcelable;
 import android.view.View;
+import android.widget.Toast;
 
-import com.github.johnpersano.supertoasts.SuperActivityToast;
-import com.github.johnpersano.supertoasts.SuperToast;
-import com.github.johnpersano.supertoasts.util.OnClickWrapper;
-import com.github.johnpersano.supertoasts.util.OnDismissWrapper;
 
 import org.geometerplus.zlibrary.core.network.ZLNetworkException;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
@@ -102,34 +99,15 @@ class ProcessHyperlinkAction extends FBAndroidAction {
 							break;
 					}
 					if (showToast) {
-						final SuperActivityToast toast;
 						if (snippet.IsEndOfText) {
-							toast = new SuperActivityToast(BaseActivity, SuperToast.Type.STANDARD);
+							Toast.makeText(BaseActivity,snippet.getText(),Toast.LENGTH_SHORT).show();
 						} else {
-							toast = new SuperActivityToast(BaseActivity, SuperToast.Type.BUTTON);
-							toast.setButtonIcon(
-								android.R.drawable.ic_menu_more,
-								ZLResource.resource("toast").getResource("more").getValue()
-							);
-							toast.setOnClickWrapper(new OnClickWrapper("ftnt", new SuperToast.OnClickListener() {
-								@Override
-								public void onClick(View view, Parcelable token) {
-									Reader.getTextView().hideOutline();
-									Reader.tryOpenFootnote(hyperlink.Id);
-								}
-							}));
+							Toast.makeText(BaseActivity,snippet.getText(),Toast.LENGTH_SHORT).show();
+							Reader.getTextView().hideOutline();
+							Reader.tryOpenFootnote(hyperlink.Id);
 						}
-						toast.setText(snippet.getText());
-						toast.setDuration(Reader.MiscOptions.FootnoteToastDuration.getValue().Value);
-						toast.setOnDismissWrapper(new OnDismissWrapper("ftnt", new SuperToast.OnDismissListener() {
-							@Override
-							public void onDismiss(View view) {
-								Reader.getTextView().hideOutline();
-								Reader.getViewWidget().repaint();
-							}
-						}));
-						Reader.getTextView().outlineRegion(region);
-						BaseActivity.showToast(toast);
+						Reader.getTextView().hideOutline();
+						Reader.getViewWidget().repaint();
 					} else {
 						Reader.tryOpenFootnote(hyperlink.Id);
 					}

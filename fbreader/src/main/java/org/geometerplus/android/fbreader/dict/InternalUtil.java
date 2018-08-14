@@ -23,12 +23,7 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.view.View;
-
-import com.github.johnpersano.supertoasts.SuperActivityToast;
-import com.github.johnpersano.supertoasts.SuperToast;
-import com.github.johnpersano.supertoasts.util.OnDismissWrapper;
-
-import org.geometerplus.zlibrary.core.resources.ZLResource;
+import android.widget.Toast;
 
 import org.geometerplus.android.fbreader.FBReaderMainActivity;
 import org.geometerplus.android.util.PackageUtil;
@@ -54,18 +49,18 @@ abstract class InternalUtil {
 		}
 	}
 
-	static void showToast(SuperActivityToast toast, final FBReaderMainActivity fbreader) {
+	static void showToast(Toast toast, final FBReaderMainActivity fbreader) {
 		if (toast == null) {
 			fbreader.hideDictionarySelection();
 			return;
 		}
 
-		toast.setOnDismissWrapper(new OnDismissWrapper("dict", new SuperToast.OnDismissListener() {
-			@Override
-			public void onDismiss(View view) {
-				fbreader.hideDictionarySelection();
-			}
-		}));
+//		toast.setOnDismissWrapper(new OnDismissWrapper("dict", new SuperToast.OnDismissListener() {
+//			@Override
+//			public void onDismiss(View view) {
+//				fbreader.hideDictionarySelection();
+//			}
+//		}));
 		fbreader.showToast(toast);
 	}
 }

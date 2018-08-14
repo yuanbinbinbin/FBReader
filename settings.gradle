@@ -1,1 +1,1 @@
-include ':app', ':fbreader', ':android-filechooser',  ':supertoasts'
+include ':app', ':fbreader', ':android-filechooser'
