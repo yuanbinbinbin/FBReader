@@ -47,6 +47,7 @@ import org.geometerplus.android.fbreader.network.auth.ActivityNetworkContext;
 import org.geometerplus.android.util.OrientationUtil;
 import org.geometerplus.android.util.UIMessageUtil;
 
+//处理文中的超链接：目录点击、脚注点击等等
 class ProcessHyperlinkAction extends FBAndroidAction {
 	ProcessHyperlinkAction(FBReader baseActivity, FBReaderApp fbreader) {
 		super(baseActivity, fbreader);
